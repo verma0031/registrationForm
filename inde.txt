@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <div class="bg">
+        <fieldset style="width: 800px; height:500px; margin: auto; background-color: white;" >
+            <form action="#" onsubmit="print(event)">
+                <h3 style="color: Orange; text-align: center;"> BOOK A CALL </h3>
+                <p style="text-align:center;">Book a call slot and our representative will call you within 1 hour of selected time</p>
+                <hr>
+                <div>
+                    <label for="fname">NAME:</label><br>
+                    <input type="text" id="fname" name="fname" value="" style="width: 780px; height: 30px;">
+                    <pre></pre>
+                </div>
+                <div>
+                    <label for="email">Email:</label><br>
+                    <input type="email" id="email" name="email" value="" style="width: 780px; height: 30px;">
+                    <pre></pre>
+                </div>
+                <div>
+                    <label for="p_no">Phone Number:</label><br>
+                    <input type="tel" id="p_no" name="p_no" value="" style="width: 780px; height: 30px;">
+                    <pre></pre>
+                </div>
+                <div>
+                    Time for Call:<br>
+                    <input type="date"  id="date" value="" style="width: 380px; height: 30px; float: right; margin-right: 10px;">
+                    <input type="time" id="time" value="" style="width: 380px; height: 30px; float: left;">
+                    <pre>
+                        <br>
+                    </pre>
+                </div>
+                <div>
+                    <br>
+                    <input type="submit" value="GET A CALL" style="width: 780px; height: 30px; background-color: chartreuse;">
+                </div>
+
+            </form>
+        </fieldset>
+    </div>
+<script src="index.js">
+    </script>
+
+
+</body>
+</html>
+
+
+
+
+<script>
+        function print(event){
+            event.preventDefault();
+            const name=document.getElementById('fname').value;
+            const email=document.getElementById('email').value;
+            var phone=document.getElementById('p_no').value;
+            const date=document.getElementById('date').value;
+            const time=document.getElementById('time').value;
+
+            console.log(name);
+            console.log(email);
+            console.log(phone);
+            console.log(date);
+            console.log(time);
+        }
+    </script>

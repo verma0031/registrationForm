@@ -1,0 +1,22 @@
+.bg-img{
+    background-image: url("bg.jpg");
+    max-width: 100%;
+    max-height: auto;
+}
+.pad-top{
+    padding-top: 10%;
+}
+.body{
+    margin: 0px;
+    padding: 0px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.loginform{
+    background-color: azure;
+    width: 1000px;
+    height: auto;
+    margin:  auto;
+    padding: 25px 10px;
+}
