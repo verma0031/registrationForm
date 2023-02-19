@@ -1,17 +1,21 @@
 
-        function print(event){
-            event.preventDefault();
-            const userName=document.getElementById('name').value;
-            const email=document.getElementById('email').value;
-            var phone=document.getElementById('phone').value;
-            const date=document.getElementById('date').value;
-            const time=document.getElementById('time').value;
+function myFunction(){
+    let userDetails={
+        userName :document.getElementById('name').value , 
+        email : document.getElementById('email').value ,
+        phone : document.getElementById('phone').value ,
+        date : document.getElementById('date').value , 
+        time : document.getElementById('time').value
+    };
+    
+    
+    
+    let userDetails_serialized=JSON.stringify(userDetails)
+
+    localStorage.setItem("userDetails" , userDetails_serialized)
+
+    let userDetails_deserialized=JSON.parse(localStorage.getItem("userDetails"))
 
 
-            localStorage.setItem('name',userName)
-            localStorage.setItem('email',email)
-            localStorage.setItem('phone',phone)
-            localStorage.setItem('date',date)
-            localStorage.setItem('time',time)
-
-        }
+    console.log(userDetails_deserialized);
+}
