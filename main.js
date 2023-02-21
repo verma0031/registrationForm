@@ -10,7 +10,7 @@ function init(){
         }
     }
 }
-function myFunction(){
+function onPressingSubmit(){
     let userDetails={
         username :document.getElementById('name').value , 
         email : document.getElementById('email').value ,
@@ -19,21 +19,19 @@ function myFunction(){
         time : document.getElementById('time').value
     };
 
-
-    userArray.push(userDetails);
+    if(selectedIndex==null){
+        userArray.push(userDetails);
+    }
+    else{
+        userArray.splice(selectedIndex , 1 , userDetails);
+    }
     console.log(userArray);
     localStorage.userRecods=JSON.stringify(userArray);
 
     init();
 
-    
+    onPressingClear();
 
-
-    document.getElementById ("name") .value = " ";
-    document. getElementById ("email" ).value = " ";
-    document.getElementById ("phone") .value = " ";
-    document.getElementById ("date") .value = " ";
-    document. getElementById ("time" ).value = " ";
     
     
     
@@ -64,7 +62,7 @@ function prepareTable(index,username , email , phone , date , time){
     ph.innerHTML = phone;
     da.innerHTML = date;
     ti.innerHTML = time;
-    edt.innerHTML= '<button style="width:100%;">Edit</button><br/><button style=" background-color:red;width:100%; margin-top:2px" onclick="deleteTableRow('+index+')">Delete</button>';
+    edt.innerHTML= '<button style="width:100%;" onclick="onPressingEdit('+index+')">Edit</button><br/><button style=" background-color:red;width:100%; margin-top:2px" onclick="deleteTableRow('+index+')">Delete</button>';
 
 
 
@@ -72,9 +70,36 @@ function prepareTable(index,username , email , phone , date , time){
 }
 
 function deleteTableRow(index){
-    var table = document.getElementById ("regtable");
-    table.deleteRow(index+1);
+    // var table = document.getElementById ("regtable");
+    // table.deleteRow(index+1);
     userArray.splice(index , 1);
     localStorage.userRecods=JSON.stringify(userArray);
     init();
+}
+
+function onPressingClear(){
+    selectedIndex=null;
+    document.getElementById ("name") .value = " ";
+    document. getElementById ("email" ).value = " ";
+    document.getElementById ("phone") .value = " ";
+    document.getElementById ("date") .value = " ";
+    document. getElementById ("time" ).value = " ";
+
+    document.getElementById('submit').value = 'Get a Call';
+}
+
+let selectedIndex=null;
+
+function onPressingEdit(index){
+    selectedIndex=index;
+
+    let userDetails=userArray[index];
+
+    document.getElementById('name').value = userDetails.username; 
+    document.getElementById('email').value = userDetails.email;
+    document.getElementById('phone').value = userDetails.phone;
+    document.getElementById('date').value = userDetails.date;
+    document.getElementById('time').value = userDetails.time;
+
+    document.getElementById('submit').value = 'Update';
 }

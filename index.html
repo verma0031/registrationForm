@@ -15,7 +15,7 @@
 
 
     <div class="container">
-        <form  action="#" onsubmit="myFunction()">
+        <form  action="#">
             <div class="mb-3">
               <label for="name" class="form-label">Name:</label>
               <input type="text" class="form-control" id="name" value="">
@@ -40,7 +40,10 @@
 
 
             <div class="mb-3" style="text-align: center;">
-                <input type="submit" id="button" class="btn btn-primary" value="Get a Call">
+                <input type="button" id="submit" class="btn btn-primary" value="Get a Call" onclick="onPressingSubmit()">
+            </div>
+            <div class="mb-3" style="text-align: center;">
+                <input type="button" id="clear" class="btn btn-primary" value="Clear" onclick="onPressingClear()">
             </div>
         </form>
     </div>
