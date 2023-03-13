@@ -1,8 +1,7 @@
+"use strict";
 let userArray=[];
-let selectedtr=null;
 
 function init(){
-    document.getElementById ("tablerows").innerHTML="";
     if(localStorage.userRecods){
         userArray=JSON.parse(localStorage.userRecods);
         for(let i=0 ; i<userArray.length ; i++){
@@ -21,11 +20,17 @@ function onPressingSubmit(){
 
     if(selectedIndex==null){
         userArray.push(userDetails);
+        axios.post('https://crudcrud.com/api/8797b0bf46f64852a458d6edcec48e39/appointmentData' , userDetails)
+    .then( (res)=>{
+        console.log(res.data);
+    })
+    .catch( (err)=>{
+        console.log(err);
+    })
     }
     else{
         userArray.splice(selectedIndex , 1 , userDetails);
     }
-    console.log(userArray);
     localStorage.userRecods=JSON.stringify(userArray);
 
     init();
@@ -74,6 +79,7 @@ function deleteTableRow(index){
     // table.deleteRow(index+1);
     userArray.splice(index , 1);
     localStorage.userRecods=JSON.stringify(userArray);
+
     init();
 }
 
