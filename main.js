@@ -2,12 +2,18 @@
 let userArray=[];
 
 function init(){
-    if(localStorage.userRecods){
-        userArray=JSON.parse(localStorage.userRecods);
-        for(let i=0 ; i<userArray.length ; i++){
-            prepareTable(i,userArray[i].username , userArray[i].email , userArray[i].phone , userArray[i].date , userArray[i].time)
+
+    axios.get('https://crudcrud.com/api/075fc8e980d44a8bad2cbf2b36e57d46/appointmentData')
+    .then( (res)=>{
+        for( let i=0 ; i<res.data.length ; i++){
+            var obj={array:res.data[i]};
+            console.log(obj);
+            prepareTable(i,obj.array.username , obj.array.email , obj.array.phone , obj.array.date , obj.array.time);
         }
-    }
+    })
+    .catch( (err)=>{
+        console.log(err);
+    })
 }
 function onPressingSubmit(){
     let userDetails={
@@ -20,7 +26,7 @@ function onPressingSubmit(){
 
     if(selectedIndex==null){
         userArray.push(userDetails);
-        axios.post('https://crudcrud.com/api/8797b0bf46f64852a458d6edcec48e39/appointmentData' , userDetails)
+        axios.post('https://crudcrud.com/api/075fc8e980d44a8bad2cbf2b36e57d46/appointmentData' , userDetails)
     .then( (res)=>{
         console.log(res.data);
     })
@@ -31,6 +37,7 @@ function onPressingSubmit(){
     else{
         userArray.splice(selectedIndex , 1 , userDetails);
     }
+    console.log(userArray);
     localStorage.userRecods=JSON.stringify(userArray);
 
     init();
@@ -50,7 +57,7 @@ function onPressingSubmit(){
     // console.log(userDetails_deserialized);
 }
 
-function prepareTable(index,username , email , phone , date , time){
+function prepareTable(index , username , email , phone , date , time){
     var table = document.getElementById ("tablerows");
     var row = table.insertRow();
     var user = row.insertCell(0);
@@ -80,7 +87,7 @@ function deleteTableRow(index){
     userArray.splice(index , 1);
     localStorage.userRecods=JSON.stringify(userArray);
 
-    init();
+    init()
 }
 
 function onPressingClear(){
