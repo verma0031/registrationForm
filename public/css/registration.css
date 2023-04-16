@@ -1,0 +1,39 @@
+.container{
+    width: 100%;
+    background-color: darkgoldenrod;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.registration{
+    width: 30%;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: aqua;
+    padding: 100px;
+    border: 1px solid red;
+}
+.form-content{
+    width: 100%;
+    padding-top: 8px;
+}
+.button{
+    border: none;
+    border-radius: 10px;
+    padding: 10px 30px;
+    font-size: 1.5rem;
+    width: 15%;
+    box-shadow: 1px 1px 5px grey;
+    margin-top: 15px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50% , 0);
+    transition: transform 0.2s;
+    cursor: pointer;
+    background-color: chartreuse;
+}
+.button:hover {
+    transform: translate(-50% , 0) scale(105%);
+}
